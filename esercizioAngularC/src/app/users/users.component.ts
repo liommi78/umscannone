@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector : 'app-users',
@@ -7,44 +9,17 @@ import { Component } from '@angular/core';
     'users.component.css'
   ]
 })
-  export class UsersComponent{
+  export class UsersComponent implements OnInit {
     title = 'Users'
-    users = [
-      {
-        name: 'Giorgio',
-        lastname: 'Cannone',
-        email: 'giorgio@gmail.com',
-        fiscalcode: 'RFAFRWFD23431',
-        province: 'Roma',
-        phone: '21521498391',
-        age: 28
-      },
-      {
-        name: 'Giulia',
-        lastname: 'Verdi',
-        email: 'giulia@gmail.com',
-        fiscalcode: 'GETEETGET42',
-        province: 'Milano',
-        phone: '25995729923',
-        age: 30
-      },
-      {
-        name: 'Mario',
-        lastname: 'Rossi',
-        email: 'mario@gmail.com',
-        fiscalcode: 'MRSSSEGEFS32',
-        province: 'Torino',
-        phone: '21521498391',
-        age: 35
-      },
-      {
-        name: 'Franco',
-        lastname: 'Verdi',
-        email: 'franco@gmail.com',
-        fiscalcode: 'FRRJJNIN525',
-        province: 'Roma',
-        phone: '4652315',
-        age: 43
-      }
-    ]
+   public users: User[] = [];
+
+    constructor(private service: UserService){
+   }
+
+   ngOnInit(): void {
+    this.users = this.service.getUsers();
+   }
+   onDeleteUser(user: User) {
+    this.service.deleteUser(user);
+   }
   }
