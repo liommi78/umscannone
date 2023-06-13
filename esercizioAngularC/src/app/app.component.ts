@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './classes/User';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'esercizioAngularC';
+  name = 'Giorgio'
+  showForm = false;
+  userSelected: User = new User();
+
+  updateUser(user: User){
+    this.showForm = true;
+    this.userSelected = user;
+  }
+
+  newUser() {
+    this.userSelected = new User();
+    this.showForm = true;
+  }
 }
