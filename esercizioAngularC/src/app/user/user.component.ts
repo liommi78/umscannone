@@ -1,11 +1,14 @@
-import { User } from '../classes/User';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../classes/User';
 
+import { faPencilAlt, faTrash, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 @Component({
   selector: 'tr[app-user]',
-  templateUrl: './user.component.html',
+  templateUrl: './user.component.html'
+
+  //inputs: ['user:user-data']
 })
 export class UserComponent implements OnInit {
 
@@ -15,18 +18,28 @@ export class UserComponent implements OnInit {
 
   faPen = faPencilAlt;
   faTrash = faTrash;
+  faInfo = faInfo;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: Router) {
 
   }
 
   ngOnInit() {
   }
-  deleteUser(){
+  deleteUser() {
+
     this.userDeleted.emit(this.user);
+
+
   }
-  updateUser(){
-    console.log(this.user);
-    this.onSelectUser.emit(this.user);
-}
+  showUserDetail(){
+    this.route.navigateByUrl('/users/' + this.user?.id );
+  }
+  updateUser() {
+    // this.route.navigateByUrl('/users/' + this.user?.id + '/edit');
+    //this.route.navigate(['users', this.user?.id, 'edit']);
+    //this.onSelectUser.emit(this.user);
+
+  }
+
 }

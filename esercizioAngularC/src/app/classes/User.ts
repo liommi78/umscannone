@@ -1,5 +1,4 @@
-import { UserInterface } from "../interfaces/user";
-
+import { UserInterface } from './../interfaces/user';
 export class User implements UserInterface {
   id: number;
   name: string;
@@ -9,8 +8,7 @@ export class User implements UserInterface {
   province: string;
   phone: string;
   age: number;
-
-  constructor(){
+  constructor() {
     this.id = 0;
     this.name = '';
     this.lastname = '';
@@ -18,6 +16,6 @@ export class User implements UserInterface {
     this.fiscalcode = '';
     this.province = '';
     this.phone = '';
-    this.age = 18;
+    this.age = 0;
   }
 }

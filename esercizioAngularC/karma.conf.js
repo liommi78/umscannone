@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/esercizio-angular-c'),
+      dir: require('path').join(__dirname, './coverage/ang12'),
       subdir: '.',
       reporters: [
         { type: 'html' },

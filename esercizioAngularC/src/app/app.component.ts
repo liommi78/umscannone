@@ -7,18 +7,18 @@ import { User } from './classes/User';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'esercizioAngularC';
-  name = 'Giorgio'
   showForm = false;
   userSelected: User = new User();
 
-  updateUser(user: User){
+
+
+  updateUser(user: User) {
     this.showForm = true;
     this.userSelected = user;
   }
-
   newUser() {
     this.userSelected = new User();
     this.showForm = true;
+
   }
 }
