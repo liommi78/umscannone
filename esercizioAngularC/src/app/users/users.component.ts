@@ -2,6 +2,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from '../classes/User';
 import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,17 +16,13 @@ import { UserService } from '../services/user.service';
 
 export class UsersComponent implements OnInit {
   title = 'Users'
-  public users: User[] = [];
+  public users$: Observable<User[]> = this.service.getUsers();
   @Output('updateUser') updateUser = new EventEmitter<User>();
 
 
   constructor(private service: UserService) {
-
-
   }
   ngOnInit(): void {
-
-    this.users = this.service.getUsers();
   }
   onDeleteUser(user: User) {
     this.service.deleteUser(user);
