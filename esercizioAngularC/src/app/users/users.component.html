@@ -14,7 +14,7 @@
   </thead>
   <tbody *ngIf="(users$ | async) as users">
   <tr app-user
-  *ngFor="let user of users" [user-data]="user"
+  *ngFor="let user of users" id="{{user.id}}" [user-data]="user"
       (onSelectUser) ="onSelectUser($event)"
   (onDeleteUser) = "onDeleteUser($event)">
 

@@ -17,11 +17,12 @@ export class UserDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(param => {
-      const id = Number(param.id);
+    this.route.paramMap.subscribe(param => {
+      const id = Number(param.get('id'));
+      if(id) {
       this.userService.getUser(id)
         .subscribe(user => this.user = user)
-
+      }
     });
   }
 
